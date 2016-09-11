@@ -29,7 +29,8 @@ public class Tela extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-		private String pasta = "C:";
+		private String pasta = "";
+		private File arquivo;
 		private JPanel contentPane;
 		private JTextField LBLindexar;
 		/**
@@ -73,6 +74,7 @@ public class Tela extends JFrame {
 					pasta = chooserDiretorio.getSelectedFile().getAbsolutePath();
 					LBLindexar.setText(pasta);
 					System.out.println(pasta);
+					arquivo = new File(pasta);
 				
 				
 				}
@@ -89,7 +91,8 @@ public class Tela extends JFrame {
 			BTNindexar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					try {
-				        Indexador.Indexar(pasta);
+						if(arquivo!=null)
+				        Indexador.Indexar(arquivo);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
